@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: 004aac1d00ed9614a95ab4cca0c98496
+timeCreated: 1451611949
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: archmodels52_013_00
+    100002: archmodels52_013_01
+    100004: archmodels52_013_01_MeshPart0
+    100006: archmodels52_013_01_MeshPart1
+    100008: archmodels52_013_01_MeshPart2
+    100010: archmodels52_013_01_MeshPart3
+    100012: archmodels52_013_02
+    100014: archmodels52_013_02_MeshPart0
+    100016: archmodels52_013_02_MeshPart1
+    100018: archmodels52_013_02_MeshPart2
+    100020: archmodels52_013_02_MeshPart3
+    100022: archmodels52_013_02_MeshPart4
+    100024: archmodels52_013_03
+    100026: //RootNode
+    400000: archmodels52_013_00
+    400002: archmodels52_013_01
+    400004: archmodels52_013_01_MeshPart0
+    400006: archmodels52_013_01_MeshPart1
+    400008: archmodels52_013_01_MeshPart2
+    400010: archmodels52_013_01_MeshPart3
+    400012: archmodels52_013_02
+    400014: archmodels52_013_02_MeshPart0
+    400016: archmodels52_013_02_MeshPart1
+    400018: archmodels52_013_02_MeshPart2
+    400020: archmodels52_013_02_MeshPart3
+    400022: archmodels52_013_02_MeshPart4
+    400024: archmodels52_013_03
+    400026: //RootNode
+    2300000: archmodels52_013_00
+    2300002: archmodels52_013_01_MeshPart0
+    2300004: archmodels52_013_01_MeshPart1
+    2300006: archmodels52_013_01_MeshPart2
+    2300008: archmodels52_013_01_MeshPart3
+    2300010: archmodels52_013_02_MeshPart0
+    2300012: archmodels52_013_02_MeshPart1
+    2300014: archmodels52_013_02_MeshPart2
+    2300016: archmodels52_013_02_MeshPart3
+    2300018: archmodels52_013_02_MeshPart4
+    2300020: archmodels52_013_03
+    3300000: archmodels52_013_00
+    3300002: archmodels52_013_01_MeshPart0
+    3300004: archmodels52_013_01_MeshPart1
+    3300006: archmodels52_013_01_MeshPart2
+    3300008: archmodels52_013_01_MeshPart3
+    3300010: archmodels52_013_02_MeshPart0
+    3300012: archmodels52_013_02_MeshPart1
+    3300014: archmodels52_013_02_MeshPart2
+    3300016: archmodels52_013_02_MeshPart3
+    3300018: archmodels52_013_02_MeshPart4
+    3300020: archmodels52_013_03
+    4300000: archmodels52_013_03
+    4300002: archmodels52_013_00
+    4300004: archmodels52_013_01_MeshPart0
+    4300006: archmodels52_013_01_MeshPart1
+    4300008: archmodels52_013_01_MeshPart2
+    4300010: archmodels52_013_01_MeshPart3
+    4300012: archmodels52_013_02_MeshPart0
+    4300014: archmodels52_013_02_MeshPart1
+    4300016: archmodels52_013_02_MeshPart2
+    4300018: archmodels52_013_02_MeshPart3
+    4300020: archmodels52_013_02_MeshPart4
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

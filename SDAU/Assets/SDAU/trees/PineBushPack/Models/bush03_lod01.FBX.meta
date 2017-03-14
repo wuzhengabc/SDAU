@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: c461dbb3a14681545a59789532363540
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100098: //RootNode
+    400098: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pine04_lod1
+    4300002: pine04_lod1_leaves
+    4300004: pine03_lod1
+    4300006: pine03_lod1_leaves
+    4300008: pine02_lod1
+    4300010: pine02_lod1_leaves
+    4300012: pine05_lod4
+    4300014: pine04_lod4
+    4300016: pine03_lod4
+    4300018: pine04_lod2
+    4300020: pine03_lod2
+    4300022: pine04_lod3
+    4300024: pine03_lod3
+    4300026: pine01_lod2
+    4300028: pine01_lod2_leaves
+    4300030: pine01_lod4
+    4300032: bush03_lod01
+    4300034: bush04_lod01
+    4300036: bush05_lod01
+    4300038: bush06_lod01
+    4300040: bush07_lod01
+    4300042: bush09_lod01
+    4300044: bush02_lod01
+    4300046: bush01_lod01
+    4300048: bush08_lod01
+    4300050: bush03_lod02
+    4300052: bush04_lod02
+    4300054: bush05_lod02
+    4300056: bush06_lod02
+    4300058: bush09_lod02
+    4300060: bush02_lod02
+    4300062: bush08_lod02
+    4300064: bush01_lod03
+    4300066: bush02_lod03
+    4300068: bush03_lod03
+    4300070: bush04_lod03
+    4300072: bush05_lod03
+    4300074: bush06_lod03
+    4300076: bush07_lod03
+    4300078: bush08_lod03
+    4300080: bush09_lod03
+    4300082: pine01_lod1
+    4300084: pine01_lod1_eaves
+    4300086: BG
+    4300088: pine01_lod3
+    4300090: pine01_lod3_leaves
+    4300092: pine02_lod02
+    4300094: pine02_lod2_leaves
+    4300096: pine02_lod03
+    4300098: pine02_lod03_leaves
+    4300100: pine02_lod04
+    4300102: pine05_lod1
+    4300104: pine05_lod1_leaves
+    4300106: pine05_lod2
+    4300108: pine05_lod2_leaves
+    4300110: pine05_lod3
+    4300112: pine05_lod3_leaves
+    4300114: pine06_lod01
+    4300116: pine06_lod1_leaves
+    4300118: pine06_lod02
+    4300120: pine06_lod2_leaves
+    4300122: pine06_lod04
+    4300124: pine06_lod3
+    4300126: pine06_lod3_leaves
+    4300128: bush01_lod02
+    4300130: bush07_lod02
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
