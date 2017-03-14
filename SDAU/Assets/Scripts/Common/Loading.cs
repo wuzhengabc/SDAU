@@ -38,6 +38,7 @@ public class Loading : MonoBehaviour
             isLoading = true;
     }
 
+    //加载场景SDAU
     IEnumerator LoadScene()
     {        
         SceneManager.LoadSceneAsync("SDAU", LoadSceneMode.Additive);
