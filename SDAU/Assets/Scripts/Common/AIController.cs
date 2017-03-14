@@ -7,6 +7,8 @@ public class AIController : MonoBehaviour
 {
     public GameObject effect_click_prefab;
     public GameObject player;
+    public GameObject mapIcon;
+    public GameObject locateIcon;
 
     [HideInInspector]
     public Vector3 targetPosition;
@@ -18,6 +20,7 @@ public class AIController : MonoBehaviour
     private bool canArrive = false;
     private bool hasDestination = false;
     private Transform flag;
+    private GameObject icon;
 
     private static AIController instance;
 
@@ -33,6 +36,9 @@ public class AIController : MonoBehaviour
 
 	void Start () 
     {
+        icon = GameObject.Instantiate(locateIcon, Vector3.zero, Quaternion.identity);
+        icon.SetActive(false);
+
         flag = GameObject.Find("flags").transform;
         lineRenderer = GameObject.Find("NavigationLine").GetComponent<LineRenderer>();
         agent = player.GetComponent<NavMeshAgent>();
@@ -65,6 +71,7 @@ public class AIController : MonoBehaviour
         }
         if (isArrive)
         {
+            icon.SetActive(false);
             lineRenderer.enabled = false;
             if (flag != null && flag.transform.childCount > 0)
             {
@@ -116,15 +123,16 @@ public class AIController : MonoBehaviour
             canArrive = false;
             print("无法到达目的地！");
         }
-        //if (needArrive)
-        //{
-        //    ShowClickEffect(targetPos);
-        //}
+
         if (needArrive && canArrive && !isMiniMap)
         {
             agent.path = path;
             agent.destination = targetPosition;
             hasDestination = true;
+            GameObject.Instantiate(mapIcon, targetPosition, Quaternion.identity, flag);
+            Vector3 lacateIconPosition = new Vector3(targetPosition.x, 1.5f, targetPosition.z);
+            icon.transform.localPosition = lacateIconPosition;
+            icon.SetActive(true);
         }
         else
         {

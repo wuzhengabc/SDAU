@@ -127,7 +127,6 @@
     <Compile Include="Assets\Scripts\Common\MiniMapController.cs" />
     <Compile Include="Assets\Scripts\Common\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Common\UIEvent.cs" />
-    <Compile Include="Assets\Scripts\Common\Welcom.cs" />
     <Compile Include="Assets\Scripts\UGUIEx\ButtonEx.cs" />
     <Compile Include="Assets\Scripts\UITween\EndCallBack.cs" />
     <Compile Include="Assets\Scripts\UITween\EndCallBackT.cs" />

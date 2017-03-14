@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip runSound;
     public AudioSource mySource;
     public NavMeshAgent agent;
-    private float walkFireRate = 0.7f;
+    private float walkFireRate = 0.54f;
     private float runFireRate = 0.32f;
     private float nextFire = 0.0f;
     /*自由视角下的角色控制*/
@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MoveManager();
-        MusicManager();
     }
 
     //玩家移动控制
@@ -121,7 +120,20 @@ public class PlayerController : MonoBehaviour
         mDir = new Vector3(mDir.x, y, mDir.z);
         mController.Move(mDir);
 
-        //角色的Idle动画
+        PlayAnimatoin(h,v);
+    }
+
+    void PlaySound(float fireRate, AudioClip sound)
+    {
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            mySource.PlayOneShot(sound);
+        }
+    }
+
+    void PlayAnimatoin(float h, float v)
+    {
         if (mController.velocity.z <= 0.1f)
         {
             mAnim.SetInteger(actionId, 0);
@@ -131,41 +143,25 @@ public class PlayerController : MonoBehaviour
         {
             mAnim.SetInteger(actionId, 1);
             State = PlayerState.Walk;
+            PlaySound(walkFireRate, walkSound);
         }
         else if (mController.velocity.z > (WalkSpeed + 0.1f))
         {
             mAnim.SetInteger(actionId, 2);
             State = PlayerState.Run;
+            PlaySound(runFireRate, walkSound);
         }
         if (agent.hasPath && agent.remainingDistance > agent.radius)
         {
             mAnim.SetInteger(actionId, 2);
             State = PlayerState.Run;
+            PlaySound(runFireRate, walkSound);
         }
-        if (h != 0)
+        if (h != 0 && mController.velocity.z <= 0.1f)
         {
             mAnim.SetInteger(actionId, 1);
             State = PlayerState.Walk;
-        }
-    }
-
-    void MusicManager()
-    {
-        if (mController.velocity.z > 0 && mController.velocity.z < 2.5f)
-        {
-            if (Time.time > nextFire)
-            {
-                nextFire = Time.time + walkFireRate;
-                mySource.PlayOneShot(walkSound);
-            }
-        }
-        else if (mController.velocity.z > 4f)
-        {
-            if (Time.time > nextFire)
-            {
-                nextFire = Time.time + runFireRate;
-                mySource.PlayOneShot(walkSound);
-            }
+            PlaySound(walkFireRate, walkSound);
         }
     }
 
