@@ -50,26 +50,28 @@ public class MiniMapController : MonoBehaviour
         miniMap.EventVisibilityOnMinimapChanged += OnVisibilityOnMinimapChanged;
     }
 
+    //全屏变换
     void OnFullscreenModeChanged(object theSender, EventArgs theArgs)
     {
         isMiniMapFullScreen = miniMap.GetFullscreen();
     }
-
+    //鼠标进入小地图
     void OnMouseMapEntered(object theSender, EventArgs theArgs)
     {
         isEnterMiniMap = true;
     }
-
+	//鼠标退出小地图
     void OnMouseMapLeft(object theSender, EventArgs theArgs)
     {
         isEnterMiniMap = false;
     }
+    //鼠标点击小地图图标
     void OnMouseMapIconClicked(object theSender, EventArgs theArgs)
     {        
         KGFMapSystem.KGFMarkerEventArgs aMarkerArgs = (KGFMapSystem.KGFMarkerEventArgs)theArgs;
         clickIconToolTip = aMarkerArgs.itsMarker.GetToolTipText();
     }    
-        
+    //鼠标点击小地图
     void OnClickedOnMinimap(object theSender, EventArgs theArgs)
     {
         Transform flag = GameObject.Find("flags").transform;
@@ -82,13 +84,14 @@ public class MiniMapController : MonoBehaviour
         canMove = true;
         clickPosition = aClickArgs.itsPosition;
     }
-
+    //在小地图创建标志
     void OnUserFlagCreated(object theSender, EventArgs theArgs)
     {       
         //canMove = true;
         //KGFMapSystem.KGFFlagEventArgs aFlagArgs = (KGFMapSystem.KGFFlagEventArgs)theArgs;
         //clickPosition = aFlagArgs.itsPosition;        
     }
+    //标志状态改变
     void OnVisibilityOnMinimapChanged(object theSender, EventArgs theArgs)
     {
         canMove = false;
