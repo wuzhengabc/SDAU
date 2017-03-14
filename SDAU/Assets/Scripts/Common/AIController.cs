@@ -18,10 +18,9 @@ public class AIController : MonoBehaviour
     private LineRenderer lineRenderer;
     private NavMeshAgent agent;
     private bool canArrive = false;
-    private bool hasDestination = false;
     private Transform flag;
     private GameObject icon;
-
+    private bool isSetDestination = false;
     private static AIController instance;
 
     public static AIController GetInstance()
@@ -46,14 +45,14 @@ public class AIController : MonoBehaviour
 	
 	void Update () 
     {
-        if (flag != null && flag.transform.childCount <= 0 && MiniMapController.GetInstance().isEnterMiniMap && !hasDestination)
+        if (flag != null && flag.transform.childCount <= 0)
         {
             lineRenderer.enabled = false;
         }
         if (MiniMapController.GetInstance().canMove)
         {
             targetPosition = MiniMapController.GetInstance().clickPosition;
-            DrawNavigationLine(MiniMapController.GetInstance().clickPosition, false, true);
+            DrawNavigationLine(targetPosition, isSetDestination, true);
             MiniMapController.GetInstance().canMove = false;
         }
         //自动寻路
@@ -64,6 +63,7 @@ public class AIController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
+                isSetDestination = true;
                 targetPosition = hit.point;
                 ShowClickEffect(hit.point);
                 DrawNavigationLine(hit.point, true, false);
@@ -71,12 +71,23 @@ public class AIController : MonoBehaviour
         }
         if (isArrive)
         {
+            isSetDestination = false;
             icon.SetActive(false);
             lineRenderer.enabled = false;
             if (flag != null && flag.transform.childCount > 0)
             {
                 Destroy(flag.transform.GetChild(0).gameObject);
             }
+        }
+        if (flag.transform.childCount == 0)
+        {
+            icon.SetActive(false);
+            agent.ResetPath();
+            //agent.Stop();
+        }
+        else
+        {
+            icon.SetActive(true);
         }
         isArrive = Vector3.Distance(player.transform.position, targetPosition) < 2;
 	}
@@ -89,6 +100,7 @@ public class AIController : MonoBehaviour
 
     public void DrawNavigationLine(Vector3 targetPos, bool needArrive, bool isMiniMap)
     {
+        isArrive = false;
         if (!isMiniMap)
         {
             if (flag != null && flag.transform.childCount > 0)
@@ -96,12 +108,12 @@ public class AIController : MonoBehaviour
                 Destroy(flag.transform.GetChild(0).gameObject);
             }
         }
-        isArrive = false;
         NavMeshPath path = new NavMeshPath();
         bool hasFoundPath = agent.CalculatePath(targetPos, path);
 
         if (path.status == NavMeshPathStatus.PathComplete)
         {
+            isSetDestination = false;
             lineRenderer.enabled = true;
             print("可以到达目的地！");
             canArrive = true;
@@ -109,6 +121,14 @@ public class AIController : MonoBehaviour
             for (int i = 0; i < path.corners.Length; i++)
             {
                 lineRenderer.SetPosition(i, path.corners[i]);
+            }
+
+            Vector3 lacateIconPosition = new Vector3(targetPosition.x, 1.5f, targetPosition.z);
+            icon.transform.localPosition = lacateIconPosition;
+            icon.SetActive(true);
+            if (!isMiniMap)
+            {
+                GameObject.Instantiate(mapIcon, targetPosition, Quaternion.identity, flag);
             }
         }
         else if (path.status == NavMeshPathStatus.PathPartial)
@@ -124,19 +144,11 @@ public class AIController : MonoBehaviour
             print("无法到达目的地！");
         }
 
-        if (needArrive && canArrive && !isMiniMap)
+        if (needArrive && canArrive)
         {
+            isSetDestination = true;
             agent.path = path;
             agent.destination = targetPosition;
-            hasDestination = true;
-            GameObject.Instantiate(mapIcon, targetPosition, Quaternion.identity, flag);
-            Vector3 lacateIconPosition = new Vector3(targetPosition.x, 1.5f, targetPosition.z);
-            icon.transform.localPosition = lacateIconPosition;
-            icon.SetActive(true);
-        }
-        else
-        {
-            hasDestination = false;
         }
     }
 }

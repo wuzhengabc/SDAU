@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -119,6 +125,7 @@
     <Compile Include="Assets\Externals\Highlighting System\HighlightingSystemDemo\Scripts\Service\FPSCounter.cs" />
     <Compile Include="Assets\Externals\Highlighting System\HighlightingSystemDemo\Scripts\Service\PresetSelector.cs" />
     <Compile Include="Assets\Externals\Highlighting System\HighlightingSystemDemo\Scripts\Service\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Common\AIController.cs" />
     <Compile Include="Assets\Scripts\Common\ApplicationLoader.cs" />
     <Compile Include="Assets\Scripts\Common\CameraController.cs" />
     <Compile Include="Assets\Scripts\Common\Loading.cs" />
@@ -126,7 +133,6 @@
     <Compile Include="Assets\Scripts\Common\MiniMapController.cs" />
     <Compile Include="Assets\Scripts\Common\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Common\UIEvent.cs" />
-    <Compile Include="Assets\Scripts\Common\Welcom.cs" />
     <Compile Include="Assets\Scripts\UGUIEx\ButtonEx.cs" />
     <Compile Include="Assets\Scripts\UITween\EndCallBack.cs" />
     <Compile Include="Assets\Scripts\UITween\EndCallBackT.cs" />

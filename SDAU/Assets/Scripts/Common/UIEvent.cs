@@ -38,6 +38,7 @@ public class UIEvent : MonoBehaviour
     private string targetName = "";
     private bool isShow = false;
     private int preIndex;
+    private Vector3 targetPosition;
     #endregion
 
     void CreatPanelTween(GameObject obj)
@@ -74,6 +75,14 @@ public class UIEvent : MonoBehaviour
 
     void Update()
     {        
+        if(AIController.GetInstance().isArrive && AIController.GetInstance().targetPosition == targetPosition)
+        {
+            textInfo.text = "到达目的地\n" + targetName;
+        }
+        else if(AIController.GetInstance().targetPosition != targetPosition)
+        {
+            textInfo.text = "欢迎来到山东农业大学";
+        }
         //设置图像质量        
         if (quality.value == 1)
         {
@@ -164,8 +173,10 @@ public class UIEvent : MonoBehaviour
             {
                 AIController.GetInstance().isArrive = false;
                 targetName = toggleGroup[i].GetComponentInChildren<Text>().text;
-                AIController.GetInstance().targetPosition = target[i].transform.position;
-                AIController.GetInstance().DrawNavigationLine(target[i].transform.position, needArrive, false);
+                targetPosition = target[i].transform.position;
+                AIController.GetInstance().targetPosition = targetPosition;
+                AIController.GetInstance().DrawNavigationLine(targetPosition, needArrive, false);
+                textInfo.text = "已设置目的地\n" + targetName;
                 break;
             }
         }
