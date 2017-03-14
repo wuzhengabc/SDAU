@@ -2,7 +2,6 @@
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.AI;
 using System;
 
 public class UIEvent : MonoBehaviour
@@ -10,7 +9,6 @@ public class UIEvent : MonoBehaviour
     #region 公共变量
     public Terrain terrain;
     public GameObject treeObj;
-    public GameObject effect_click_prefab;
     public GameObject[] panels;
     public GameObject character;
     public Text textInfo;
@@ -36,17 +34,10 @@ public class UIEvent : MonoBehaviour
     #endregion
 
     #region 私有变量
-    private LineRenderer lineRenderer;
     private AudioSource musicSource;
-    private NavMeshAgent agent;
-    private bool isArrive = false;
-    private bool canArrive = false;
     private string targetName = "";
     private bool isShow = false;
-    private bool hasDestination = false;
-    private Vector3 targetPosition;
     private int preIndex;
-    Transform flag;
     #endregion
 
     void CreatPanelTween(GameObject obj)
@@ -58,8 +49,6 @@ public class UIEvent : MonoBehaviour
 
     void Start()
     {
-        flag = GameObject.Find("flags").transform;
-        lineRenderer = GameObject.Find("NavigationLine").GetComponent<LineRenderer>();
         setResolution.ClearOptions();
         Resolution[] resolutions = Screen.resolutions;
         for ( int i = 0; i < resolutions.Length; i++)
@@ -76,7 +65,6 @@ public class UIEvent : MonoBehaviour
         }
         
         musicSource = GetComponent<AudioSource>();
-        agent = character.GetComponent<NavMeshAgent>();
 
         for (int i = 0; i < panels.Length; i++)
         {
@@ -85,43 +73,7 @@ public class UIEvent : MonoBehaviour
     }
 
     void Update()
-    {
-        if (flag != null && flag.transform.childCount <= 0 && MiniMapController.isEnterMiniMap && !hasDestination)
-        {
-            lineRenderer.enabled = false;
-        }
-
-        if (MiniMapController.canMove)
-        {
-            targetPosition = MiniMapController.clickPosition;
-            DrawNavigationLine(MiniMapController.clickPosition, false, true);
-            MiniMapController.canMove = false;
-        }
-        //自动寻路
-        if (!MiniMapController.isEnterMiniMap && Input.GetMouseButtonDown(2))
-        {
-            agent.enabled = true;            
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                targetName = "";
-                textInfo.text = "欢迎来到山东农业大学";
-                targetPosition = hit.point;
-                ShowClickEffect(hit.point);
-                DrawNavigationLine(hit.point, true, false);
-            }
-        }
-        if (isArrive)
-        {
-            lineRenderer.enabled = false;
-            textInfo.text = "已到达目的地\n" + targetName;
-            if (flag != null && flag.transform.childCount > 0)
-            {
-                Destroy(flag.transform.GetChild(0).gameObject);
-            }
-        }
-        isArrive = Vector3.Distance(character.transform.position, targetPosition) < 2;
+    {        
         //设置图像质量        
         if (quality.value == 1)
         {
@@ -202,81 +154,24 @@ public class UIEvent : MonoBehaviour
             Screen.fullScreen = false;
         }
     }
-    
-    void DrawNavigationLine(Vector3 targetPos, bool needArrive, bool isMiniMap)
-    {
-        if(!isMiniMap)
-        {
-            if (flag != null && flag.transform.childCount > 0)
-            {
-                Destroy(flag.transform.GetChild(0).gameObject);
-            }
-        }
-        isArrive = false;
-        lineRenderer.enabled = true;
-        NavMeshPath path = new NavMeshPath();
-        bool hasFoundPath = agent.CalculatePath(targetPos, path);
-
-        if (path.status == NavMeshPathStatus.PathComplete)
-        {
-            print("可以到达目的地！");
-            canArrive = true;
-            lineRenderer.numPositions = path.corners.Length;
-            for (int i = 0; i < path.corners.Length; i++)
-            {
-                lineRenderer.SetPosition(i, path.corners[i]);
-            }
-        }
-        else if (path.status == NavMeshPathStatus.PathPartial)
-        {
-            canArrive = false;
-            print("只能到达目的地附近！");
-        }
-        else if (path.status == NavMeshPathStatus.PathInvalid)
-        {
-            canArrive = false;
-            print("无法到达目的地！");
-        }
-        //if (needArrive)
-        //{
-        //    ShowClickEffect(targetPos);
-        //}
-        if (needArrive && canArrive && !isMiniMap)
-        {
-            agent.path = path;
-            agent.destination = targetPosition;
-            hasDestination = true;
-        }
-        else
-        {
-            hasDestination = false;
-        }
-    }
 
     //计算到达目的地的路径    
     public void CalculateRoute(bool needArrive)
     {
-        agent.enabled = true;
         for (int i = 0; i < toggleGroup.Length; i++)
         {
             if (toggleGroup[i].isOn)
             {
-                isArrive = false;
+                AIController.GetInstance().isArrive = false;
                 targetName = toggleGroup[i].GetComponentInChildren<Text>().text;
-                textInfo.text = "目的地：" + targetName;
-                targetPosition = target[i].transform.position;
-                DrawNavigationLine(targetPosition, needArrive, false);
+                AIController.GetInstance().targetPosition = target[i].transform.position;
+                AIController.GetInstance().DrawNavigationLine(target[i].transform.position, needArrive, false);
                 break;
             }
         }
         ShowPanel(1);
     }
 
-    void ShowClickEffect(Vector3 hitPoint)
-    {
-        hitPoint = new Vector3(hitPoint.x, hitPoint.y + 0.1f, hitPoint.z);
-        GameObject.Instantiate(effect_click_prefab, hitPoint, Quaternion.identity);
-    }
     //退出
     public void Exit()
     {

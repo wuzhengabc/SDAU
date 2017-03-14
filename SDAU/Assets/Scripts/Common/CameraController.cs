@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
             mY = Target.localEulerAngles.x;
             mX = Target.localEulerAngles.y;
         }
-        else if(!MiniMapController.isEnterMiniMap)
+        else if (!MiniMapController.GetInstance().isEnterMiniMap)
         {
             //鼠标右键旋转
             if (Input.GetMouseButton(1))

@@ -5,12 +5,25 @@ using UnityEngine;
 
 public class MiniMapController : MonoBehaviour 
 {
-    public static bool isMiniMapFullScreen;
-    public static bool isEnterMiniMap;
-    public static string clickIconToolTip;
-    public static Vector3 clickPosition;
-    public static bool canMove;
+    public bool isMiniMapFullScreen;
+    public bool isEnterMiniMap;
+    public string clickIconToolTip;
+    public Vector3 clickPosition;
+    public bool canMove;
     private KGFMapSystem miniMap;
+
+    private static MiniMapController instance;
+
+    public static MiniMapController GetInstance()
+    {
+        return instance;
+    }
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start () 
     {
         miniMap = GameObject.Find("MiniMap").GetComponent<KGFMapSystem>();

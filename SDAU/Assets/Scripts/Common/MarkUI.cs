@@ -31,7 +31,7 @@ public class MarkUI : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.parent != null && hit.transform.parent.CompareTag("canClick") && !isUI && !MiniMapController.isEnterMiniMap && !Loading.isLoading)
+            if (hit.transform.parent != null && hit.transform.parent.CompareTag("canClick") && !isUI && !MiniMapController.GetInstance().isEnterMiniMap && !Loading.isLoading)
             {
                 mark.transform.position = Input.mousePosition;
                 mark.SetActive(true);
