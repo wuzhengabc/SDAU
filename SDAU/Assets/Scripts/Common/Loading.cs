@@ -27,15 +27,15 @@ public class Loading : MonoBehaviour
             miniMap = map.GetComponent<KGFMapSystem>();
             miniMap.SetMinimapSize(0f);
             button.transform.localScale = new Vector3(0,0,0);
+            if (slider.value == 1)
+            {
+                isLoading = false;
+                button.transform.localScale = new Vector3(1, 1, 1);
+                miniMap.SetMinimapSize(0.25f);
+            }
+            else
+                isLoading = true;
         }
-        if (slider.value == 1)
-        {
-            isLoading = false;
-            button.transform.localScale = new Vector3(1, 1, 1);
-            miniMap.SetMinimapSize(0.25f);
-        }
-        else
-            isLoading = true;
     }
 
     //加载场景SDAU

@@ -3656,7 +3656,8 @@ public class KGFMapSystem : KGFModule, KGFICustomGUI, KGFIValidator
 							itsCameraTransform.up * aRadius * Mathf.Cos(aCorrectedAngle * Mathf.Deg2Rad);
 						
 						aVector = ChangeVectorHeight(aVector,GetHeightArrows(i));
-						aListItem.itsRepresentationArrowInstanceTransform.position = aVector;
+                        if(aVector.x.ToString() != "NaN")
+                            aListItem.itsRepresentationArrowInstanceTransform.position = aVector;
 						
 						// rotation
 						if (itsDataModuleMinimap.itsGlobalSettings.itsOrientation == KGFMapSystemOrientation.XZDefault)

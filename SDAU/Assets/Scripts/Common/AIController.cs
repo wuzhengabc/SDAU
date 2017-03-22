@@ -45,6 +45,7 @@ public class AIController : MonoBehaviour
 	
 	void Update () 
     {
+        icon.SetActive(lineRenderer.enabled);
         if (flag != null && flag.transform.childCount <= 0)
         {
             lineRenderer.enabled = false;
@@ -72,7 +73,6 @@ public class AIController : MonoBehaviour
         if (isArrive)
         {
             isSetDestination = false;
-            icon.SetActive(false);
             lineRenderer.enabled = false;
             if (flag != null && flag.transform.childCount > 0)
             {
@@ -80,14 +80,8 @@ public class AIController : MonoBehaviour
             }
         }
         if (flag.transform.childCount == 0)
-        {
-            icon.SetActive(false);
+        {            
             agent.ResetPath();
-            //agent.Stop();
-        }
-        else
-        {
-            icon.SetActive(true);
         }
         isArrive = Vector3.Distance(player.transform.position, targetPosition) < 2;
 	}
@@ -125,7 +119,6 @@ public class AIController : MonoBehaviour
 
             Vector3 lacateIconPosition = new Vector3(targetPosition.x, 1.5f, targetPosition.z);
             icon.transform.localPosition = lacateIconPosition;
-            icon.SetActive(true);
             if (!isMiniMap)
             {
                 GameObject.Instantiate(mapIcon, targetPosition, Quaternion.identity, flag);

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4c219f5c61443e841b8e6bd31250984f
+timeCreated: 1490188744
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Microsoft YaHei
+  fontNames:
+  - Microsoft YaHei
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
