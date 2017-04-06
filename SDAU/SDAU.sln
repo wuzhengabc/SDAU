@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDAU.Plugins", "SDAU.Plugins.csproj", "{AA4DB8D4-88EF-CB4C-8406-3F53849D6D5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDAU", "SDAU.csproj", "{BD27B6DD-27FD-8B42-D91C-BFCF8B62A972}"
