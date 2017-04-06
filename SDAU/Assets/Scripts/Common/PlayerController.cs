@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         float v = 0;
         float h = 0;
-        if (!(agent.hasPath && agent.remainingDistance > agent.radius))
+        if (!agent.hasPath || agent.remainingDistance < agent.radius)
         {
             v = Input.GetAxis("Vertical");
             h = Input.GetAxis("Horizontal");
@@ -101,17 +101,14 @@ public class PlayerController : MonoBehaviour
                 SetDirection(DirectionType.Direction_Right);
             else if (h == -1)
                 SetDirection(DirectionType.Direction_Left);
-            if (v >= 0)
+            agent.ResetPath();
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                agent.ResetPath();
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    mDir = Vector3.forward * Time.deltaTime * RunSpeed * v;
-                }
-                else
-                {
-                    mDir = Vector3.forward * Time.deltaTime * WalkSpeed * v;
-                }
+                mDir = Vector3.forward * Time.deltaTime * RunSpeed * v;
+            }
+            else
+            {
+                mDir = Vector3.forward * Time.deltaTime * WalkSpeed * v;
             }
         }
         //考虑重力因素
@@ -134,18 +131,19 @@ public class PlayerController : MonoBehaviour
 
     void PlayAnimatoin(float h, float v)
     {
-        if (mController.velocity.z <= 0.1f)
+        float velocity = mController.velocity.magnitude;
+        if (velocity <= 0.1f)
         {
             mAnim.SetInteger(actionId, 0);
             State = PlayerState.Idle;
         }
-        else if (mController.velocity.z > 0.1f && mController.velocity.z <= (WalkSpeed + 0.1f))
+        else if (velocity > 0.1f && velocity < RunSpeed)
         {
             mAnim.SetInteger(actionId, 1);
             State = PlayerState.Walk;
             PlaySound(walkFireRate, walkSound);
         }
-        else if (mController.velocity.z > (WalkSpeed + 0.1f))
+        else if (velocity >= RunSpeed)
         {
             mAnim.SetInteger(actionId, 2);
             State = PlayerState.Run;
@@ -157,7 +155,7 @@ public class PlayerController : MonoBehaviour
             State = PlayerState.Run;
             PlaySound(runFireRate, walkSound);
         }
-        if (h != 0 && mController.velocity.z <= 0.1f)
+        if (h != 0 && velocity <= 0.1f)
         {
             mAnim.SetInteger(actionId, 1);
             State = PlayerState.Walk;

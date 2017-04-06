@@ -8,6 +8,14 @@ public class CameraController : MonoBehaviour
     //观察距离
     public float Distance = 6F;
     public float yDistance = 3f;
+
+    //是否允许上下移动相机
+    public bool CameraUpAndDown;
+    private bool mbMouseButtonDown = false;
+    private Vector3 mMouseDownPos = Vector3.zero;
+    public float MinCameraPos = -0.8f;
+    public float MaxCameraPos = 1f;
+
     //旋转速度
     private float SpeedX = 240;
     private float SpeedY = 120;
@@ -60,11 +68,35 @@ public class CameraController : MonoBehaviour
         }
     }
     void LateUpdate()
-    { 
+    {
+        if (CameraUpAndDown)
+        {
+            if (Input.GetMouseButton(2))
+            {
+                if (!mbMouseButtonDown)
+                {
+                    mMouseDownPos = Input.mousePosition;
+                    mbMouseButtonDown = true;
+                }
+                else
+                {
+                    Vector3 curpos = Input.mousePosition;
+                    float deltaY = mMouseDownPos.y - curpos.y;
+                    yDistance += deltaY * 0.008f;
+                    yDistance = Mathf.Clamp(yDistance, MinCameraPos, MaxCameraPos);
+                    mMouseDownPos = curpos;
+                }
+            }
+            else
+            {
+                mbMouseButtonDown = false;
+            }
+        }
         isAutoMove = controller.agent.hasPath && controller.agent.remainingDistance > controller.agent.radius;
         if (isAutoMove)
         {
-            yDistance = 3;
+            if(!CameraUpAndDown)
+                yDistance = 3;
             Distance = 6;
             mY = Target.localEulerAngles.x;
             mX = Target.localEulerAngles.y;

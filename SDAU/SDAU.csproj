@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\Common\ApplicationLoader.cs" />
     <Compile Include="Assets\Scripts\Common\CameraController.cs" />
     <Compile Include="Assets\Scripts\Common\Loading.cs" />
+    <Compile Include="Assets\Scripts\Common\LookAtCamera.cs" />
     <Compile Include="Assets\Scripts\Common\MarkUI.cs" />
     <Compile Include="Assets\Scripts\Common\MiniMapController.cs" />
     <Compile Include="Assets\Scripts\Common\PlayerController.cs" />

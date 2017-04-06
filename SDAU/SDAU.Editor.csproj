@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
+    <Compile Include="Assets\Editor\SceneCameraEditor.cs" />
     <Compile Include="Assets\Scripts\UITween\Editor\DrawHeadInspector.cs" />
     <Compile Include="Assets\Scripts\UITween\Editor\UITweenAlphaEditor.cs" />
     <Compile Include="Assets\Scripts\UITween\Editor\UITweenEditor.cs" />

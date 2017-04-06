@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using System.Collections;
 
 public class UIEvent : MonoBehaviour
 {
@@ -11,13 +12,13 @@ public class UIEvent : MonoBehaviour
     public GameObject treeObj;
     public GameObject[] panels;
     public GameObject character;
-    public Text textInfo;
     public Slider BGM;
     public Slider music;
     public Slider quality;
     public Slider shadow;
     public Slider grass;
     public Slider tree;
+    public GameObject infoPanel;
 
     public Toggle toggleWindow;
     public Toggle toggleFullScreen;
@@ -37,6 +38,8 @@ public class UIEvent : MonoBehaviour
     private AudioSource musicSource;
     private string targetName = "";
     private bool isShow = false;
+    private bool isInfoShow = false;
+    private bool isArrive = false;
     private int preIndex;
     private Vector3 targetPosition;
     #endregion
@@ -50,6 +53,10 @@ public class UIEvent : MonoBehaviour
 
     void Start()
     {
+        Tweener tweenerInfo = infoPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector3(380.5f,-210,0), 0.3f);
+        tweenerInfo.SetAutoKill(false);
+        tweenerInfo.Pause();
+
         setResolution.ClearOptions();
         Resolution[] resolutions = Screen.resolutions;
         for ( int i = 0; i < resolutions.Length; i++)
@@ -75,13 +82,15 @@ public class UIEvent : MonoBehaviour
 
     void Update()
     {        
-        if(AIController.GetInstance().isArrive && AIController.GetInstance().targetPosition == targetPosition)
+        if(AIController.GetInstance().isArrive && AIController.GetInstance().targetPosition == targetPosition && !isArrive)
         {
-            textInfo.text = "到达目的地\n" + targetName;
+            ShowInfoPanel("到达目的地：" + targetName);
+            isArrive = true;
         }
         else if(AIController.GetInstance().targetPosition != targetPosition)
         {
-            textInfo.text = "欢迎来到山东农业大学";
+            isArrive = false;
+            //ShowInfoPanel("");
         }
         //设置图像质量        
         if (quality.value == 1)
@@ -176,7 +185,7 @@ public class UIEvent : MonoBehaviour
                 targetPosition = target[i].transform.position;
                 AIController.GetInstance().targetPosition = targetPosition;
                 AIController.GetInstance().DrawNavigationLine(targetPosition, needArrive, false);
-                textInfo.text = "已设置目的地\n" + targetName;
+                ShowInfoPanel("已设置目的地：" + targetName);
                 break;
             }
         }
@@ -212,6 +221,30 @@ public class UIEvent : MonoBehaviour
             isShow = false;
         }
     }
+
+    public void ShowInfoPanel(string info)
+    {
+        if(!isInfoShow)
+        {
+            Text text = infoPanel.transform.FindChild("TextInfo").GetComponent<Text>();
+            text.text = info;
+            infoPanel.GetComponent<RectTransform>().DOPlayForward();
+            isInfoShow = true;
+            StartCoroutine(CloseInfoPanel());
+        }
+        else
+        {
+            infoPanel.GetComponent<RectTransform>().DOPlayBackwards();
+            isInfoShow = false;
+        }
+    }
+
+    IEnumerator CloseInfoPanel()
+    {
+        yield return new WaitForSeconds(5f);
+        ShowInfoPanel("");
+    }
+
     //音乐控制
     public void Music()
     {

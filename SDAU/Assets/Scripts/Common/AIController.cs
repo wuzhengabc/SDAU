@@ -22,6 +22,8 @@ public class AIController : MonoBehaviour
     private GameObject icon;
     private bool isSetDestination = false;
     private static AIController instance;
+    Vector3 mouseDownPos = Vector3.zero;
+    Vector3 mouseUpPos = Vector3.one;
 
     public static AIController GetInstance()
     {
@@ -57,7 +59,7 @@ public class AIController : MonoBehaviour
             MiniMapController.GetInstance().canMove = false;
         }
         //自动寻路
-        if (!MiniMapController.GetInstance().isEnterMiniMap && Input.GetMouseButtonDown(2))
+        if (CheckMoseButtonDown(1) && !MiniMapController.GetInstance().isEnterMiniMap)
         {
             agent.enabled = true;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -85,6 +87,22 @@ public class AIController : MonoBehaviour
         }
         isArrive = Vector3.Distance(player.transform.position, targetPosition) < 2;
 	}
+
+    bool CheckMoseButtonDown(int i)
+    {
+        bool isChecked = false;
+        if (Input.GetMouseButtonDown(i))
+        {
+            mouseDownPos = Input.mousePosition;
+        }
+        if(Input.GetMouseButtonUp(i))
+        {
+            mouseUpPos = Input.mousePosition;
+            if (mouseDownPos == mouseUpPos)
+                isChecked = true;
+        }
+        return isChecked;
+    }
 
     void ShowClickEffect(Vector3 hitPoint)
     {
