@@ -127,7 +127,7 @@
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingTransparent.shader" />
     <None Include="Assets\SDAU\trees\Maple Tree Package\readme_MapleTrees.txt" />
     <None Include="Assets\Shader\MyShader.shader" />
-    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue %2B100).shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderMapIcon.shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderMapMask.shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderPhotoPlane.shader" />

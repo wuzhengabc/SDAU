@@ -53,7 +53,7 @@ public class UIEvent : MonoBehaviour
 
     void Start()
     {
-        Tweener tweenerInfo = infoPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector3(380.5f,-210,0), 0.3f);
+        Tweener tweenerInfo = infoPanel.GetComponent<RectTransform>().DOAnchorPos(new Vector3(-131,-210,0), 0.3f);
         tweenerInfo.SetAutoKill(false);
         tweenerInfo.Pause();
 
