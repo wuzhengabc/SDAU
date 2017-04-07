@@ -8,6 +8,7 @@ using System.Collections;
 public class UIEvent : MonoBehaviour
 {
     #region 公共变量
+    public Texture2D cursorTexture;  
     public Terrain terrain;
     public GameObject treeObj;
     public GameObject[] panels;
@@ -42,6 +43,8 @@ public class UIEvent : MonoBehaviour
     private bool isArrive = false;
     private int preIndex;
     private Vector3 targetPosition;
+
+    private bool changeFlag;
     #endregion
 
     void CreatPanelTween(GameObject obj)
@@ -276,5 +279,32 @@ public class UIEvent : MonoBehaviour
         int width = int.Parse(selectes[0]);
         int height = int.Parse(selectes[1]);
         Screen.SetResolution(width, height, toggleFullScreen.isOn);
+    }
+
+    public void OpenUrl(string url)
+    {
+        Application.OpenURL(url);
+    }
+
+    public void ChangeCursor(bool flag)
+    {
+        changeFlag = flag;
+        if (changeFlag)
+        {
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+    }
+
+    private void OnGUI()
+    {
+        if (changeFlag)
+        {
+            var mousePos = Input.mousePosition;
+            GUI.DrawTexture(new Rect(mousePos.x, Screen.height - mousePos.y, cursorTexture.width, cursorTexture.height), cursorTexture);
+        }
     }
 }

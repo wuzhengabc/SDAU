@@ -106,9 +106,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WebGL.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
     </Reference>
@@ -184,6 +181,7 @@
     <Compile Include="Assets\Scripts\UITween\Editor\UITweenScaleEditor.cs" />
     <Compile Include="Assets\Scripts\UITween\Editor\UITweenSliderEditor.cs" />
     <Compile Include="Assets\Scripts\UITween\Editor\UITweenTextEditor.cs" />
+    <Compile Include="Assets\iTweenEditor\Editor\iTweenEventDataEditor.cs" />
     <Compile Include="Assets\kolmich\KGFCore\KGFCustomGUI\scripts\Editor\KGFCustomGUIEditor.cs" />
     <Compile Include="Assets\kolmich\KGFCore\KGFEvent\Editor\KGFEventEditor.cs" />
     <Compile Include="Assets\kolmich\KGFCore\KGFEvent\Editor\KGFEventSequenceEditor.cs" />
@@ -198,9 +196,12 @@
     <Compile Include="Assets\kolmich\Resources\KGFSkins\default\scripts\Editor\KGFEditorSkinDefault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Car\Shaders\CarPaintOpaque.shader" />
+    <None Include="Assets\Car\Shaders\CarPaintTransparent.shader" />
+    <None Include="Assets\Car\Shaders\U5_CarStandardSpecular.shader" />
     <None Include="Assets\Character\Shaders\toon_cutoff.shader" />
     <None Include="Assets\Character\Shaders\toon_hair.shader" />
-    <None Include="Assets\Data\XMl\PopupTagConfig.xml" />
+    <None Include="Assets\Data\xml\PopupTagConfig.xml" />
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
@@ -220,7 +221,7 @@
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingTransparent.shader" />
     <None Include="Assets\SDAU\trees\Maple Tree Package\readme_MapleTrees.txt" />
     <None Include="Assets\Shader\MyShader.shader" />
-    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue %2B100).shader" />
+    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderMapIcon.shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderMapMask.shader" />
     <None Include="Assets\kolmich\KGFMapSystem\shaders\ShaderPhotoPlane.shader" />

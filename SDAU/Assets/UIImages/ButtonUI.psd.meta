@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cda0805c443e973478f7b6810527c4bc
-timeCreated: 1489373325
+timeCreated: 1491542682
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,8 @@ TextureImporter:
     21300016: Exit_Normal
     21300018: Exit_Hover
     21300020: Dialog
+    21300022: Introduce_Normal
+    21300024: Inrtroduce_Hover
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -38,7 +40,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -100,10 +102,10 @@ TextureImporter:
       name: Setting_Normal
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1541
-        width: 502
-        height: 502
+        x: 4
+        y: 1540
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,10 +115,10 @@ TextureImporter:
       name: Setting_Hover
       rect:
         serializedVersion: 2
-        x: 517
-        y: 1542
-        width: 502
-        height: 502
+        x: 516
+        y: 1541
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,10 +128,10 @@ TextureImporter:
       name: About_Normal
       rect:
         serializedVersion: 2
-        x: 1026
-        y: 1542
-        width: 502
-        height: 502
+        x: 1025
+        y: 1541
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,10 +141,10 @@ TextureImporter:
       name: About_Hover
       rect:
         serializedVersion: 2
-        x: 1535
-        y: 1546
-        width: 502
-        height: 502
+        x: 1534
+        y: 1545
+        width: 504
+        height: 503
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +154,10 @@ TextureImporter:
       name: Help_Normal
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1029
-        width: 502
-        height: 502
+        x: 4
+        y: 1028
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +167,10 @@ TextureImporter:
       name: Help_Hover
       rect:
         serializedVersion: 2
-        x: 514
-        y: 1029
-        width: 502
-        height: 502
+        x: 513
+        y: 1028
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +180,10 @@ TextureImporter:
       name: Place_Normal
       rect:
         serializedVersion: 2
-        x: 1032
-        y: 1028
-        width: 502
-        height: 502
+        x: 1031
+        y: 1027
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +193,10 @@ TextureImporter:
       name: Place_Hover
       rect:
         serializedVersion: 2
-        x: 1539
-        y: 1028
-        width: 502
-        height: 502
+        x: 1538
+        y: 1027
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +206,10 @@ TextureImporter:
       name: Exit_Normal
       rect:
         serializedVersion: 2
-        x: 5
-        y: 516
-        width: 502
-        height: 502
+        x: 4
+        y: 515
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +219,10 @@ TextureImporter:
       name: Exit_Hover
       rect:
         serializedVersion: 2
-        x: 515
-        y: 517
-        width: 502
-        height: 502
+        x: 514
+        y: 516
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,11 +234,37 @@ TextureImporter:
         serializedVersion: 2
         x: 1042
         y: 234
-        width: 991
-        height: 547
+        width: 992
+        height: 548
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 132, y: 238, z: 150, w: 106}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Introduce_Normal
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 7
+        width: 504
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Inrtroduce_Hover
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 8
+        width: 504
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     outline: []

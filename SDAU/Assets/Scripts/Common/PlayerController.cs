@@ -104,11 +104,25 @@ public class PlayerController : MonoBehaviour
             agent.ResetPath();
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                mDir = Vector3.forward * Time.deltaTime * RunSpeed * v;
+                if (v < 0)
+                {
+                    mDir = -Vector3.forward * Time.deltaTime * RunSpeed * v;
+                }
+                else
+                {
+                    mDir = Vector3.forward * Time.deltaTime * RunSpeed * v;
+                }
             }
             else
             {
-                mDir = Vector3.forward * Time.deltaTime * WalkSpeed * v;
+                if(v < 0)
+                {
+                    mDir = -Vector3.forward * Time.deltaTime * WalkSpeed * v;
+                }
+                else
+                {
+                    mDir = Vector3.forward * Time.deltaTime * WalkSpeed * v;
+                }
             }
         }
         //考虑重力因素
