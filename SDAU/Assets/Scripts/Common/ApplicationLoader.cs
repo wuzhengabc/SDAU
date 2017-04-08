@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ApplicationLoader : MonoBehaviour 
 {
-    private string xmlPath = "Data/XML/PopupTagConfig.xml";
+    private string xmlPath = "Data/xml/PopupTagConfig.xml";
 	void Start () 
     {
 		

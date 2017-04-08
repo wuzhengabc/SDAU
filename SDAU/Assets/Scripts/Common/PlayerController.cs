@@ -4,10 +4,12 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool isColliderHit = false;
     //音效相关
     public AudioClip walkSound;
     public AudioClip runSound;
     public AudioSource mySource;
+    [HideInInspector]
     public NavMeshAgent agent;
     private float walkFireRate = 0.54f;
     private float runFireRate = 0.32f;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 1.5F;
     public float RunSpeed = 3.5F;
     //重力
-    public float Gravity = 20;
+    public float Gravity = 10;
 
     //角色控制器
     private CharacterController mController;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        CheckColliderHit();
         MoveManager();
     }
 
@@ -130,8 +133,7 @@ public class PlayerController : MonoBehaviour
         float y = mDir.y - Gravity * Time.deltaTime;
         mDir = new Vector3(mDir.x, y, mDir.z);
         mController.Move(mDir);
-
-        PlayAnimatoin(h,v);
+        PlayAnimatoin(h, v);
     }
 
     void PlaySound(float fireRate, AudioClip sound)
@@ -181,5 +183,21 @@ public class PlayerController : MonoBehaviour
     void SetDirection(DirectionType dir)
     {   
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, transform.eulerAngles.y + (int)dir, 0), Time.deltaTime);
+    }
+
+    void CheckColliderHit()
+    {
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        RaycastHit hit;
+        if (Physics.Raycast(origin, transform.position,out hit,1f))
+        {
+            isColliderHit = true;
+            Debug.DrawLine(origin, hit.point);
+        }
+
+        else
+        {
+            isColliderHit = false;
+        }
     }
 }

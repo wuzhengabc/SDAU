@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
@@ -61,7 +59,6 @@ public class AIController : MonoBehaviour
         //自动寻路
         if (CheckMoseButtonDown(1) && !MiniMapController.GetInstance().isEnterMiniMap)
         {
-            agent.enabled = true;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))

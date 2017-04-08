@@ -69,6 +69,7 @@ public class CameraController : MonoBehaviour
     }
     void LateUpdate()
     {
+        isAutoMove = controller.agent.hasPath && controller.agent.remainingDistance > controller.agent.radius;
         if (CameraUpAndDown)
         {
             if (Input.GetMouseButton(2))
@@ -92,7 +93,6 @@ public class CameraController : MonoBehaviour
                 mbMouseButtonDown = false;
             }
         }
-        isAutoMove = controller.agent.hasPath && controller.agent.remainingDistance > controller.agent.radius;
         if (isAutoMove)
         {
             if(!CameraUpAndDown)
