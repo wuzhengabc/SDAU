@@ -9,7 +9,6 @@ public class UIEvent : MonoBehaviour
 {
     #region 公共变量
     public Texture2D cursorTexture;  
-    public Terrain terrain;
     public GameObject treeObj;
     public GameObject[] panels;
     public GameObject character;
@@ -43,7 +42,7 @@ public class UIEvent : MonoBehaviour
     private bool isArrive = false;
     private int preIndex;
     private Vector3 targetPosition;
-
+    
     private bool changeFlag;
     #endregion
 
@@ -150,19 +149,19 @@ public class UIEvent : MonoBehaviour
         {
             sliderMusic.gameObject.SetActive(false);
         }
+
         //设置草地密度
         if (grass.value == 1)
         {
             sliderGrass.gameObject.SetActive(true);
             //调节密度
-            terrain.detailObjectDensity = sliderGrass.value;
         }
         else
         {
-            terrain.detailObjectDensity = 0;
             sliderGrass.gameObject.SetActive(false);
         }
 
+        //是否渲染树木
         treeObj.SetActive(tree.value == 1);
 
         //显示模式设置
