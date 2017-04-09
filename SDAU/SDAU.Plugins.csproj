@@ -94,6 +94,9 @@
     <Reference Include="KGFUtils.Settings">
       <HintPath>Assets\kolmich\KGFCore\KGFUtility\KGFUtils.Settings.dll</HintPath>
     </Reference>
+    <Reference Include="EasyRoads3D">
+      <HintPath>Assets\EasyRoads3D\lib\EasyRoads3D.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Highlighter.cs" />
@@ -123,6 +126,21 @@
     <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D Marker.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-BumpSpec Unity 3.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-BumpSpec.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-Bumped Unity 3.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-Bumped.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-Diffuse Unity 3.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Alpha-Diffuse.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Normal-BumpSpec.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Normal-Bumped.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Normal-Diffuse.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Road-Edit-Mode.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Surface alpha.shader" />
+    <None Include="Assets\EasyRoads3D\Shaders\EasyRoads3D-Surface.shader" />
+    <None Include="Assets\EasyRoads3D\_Readme.txt" />
+    <None Include="Assets\EasyRoads3D\_Release Notes.txt" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingBlur.shader" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingComposite.shader" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingCut.shader" />
