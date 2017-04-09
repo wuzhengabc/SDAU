@@ -12,11 +12,10 @@ public class UIEvent : MonoBehaviour
     public GameObject treeObj;
     public GameObject[] panels;
     public GameObject character;
-    public Slider BGM;
+    public Slider sound;
     public Slider music;
     public Slider quality;
     public Slider shadow;
-    public Slider grass;
     public Slider tree;
     public GameObject infoPanel;
 
@@ -25,17 +24,16 @@ public class UIEvent : MonoBehaviour
     public Dropdown setResolution;
     public Toggle[] toggleGroup;
     public Light lighting;    
-    public Slider siderBGM;
     public Slider sliderMusic;
+    public Slider sliderSound;
     public Slider sliderQuality;
     public Slider sliderShadow;
-    public Slider sliderGrass;
     public GameObject[] target;
+    public AudioSource musicSource;
     public AudioSource soundSource;
     #endregion
 
     #region 私有变量
-    private AudioSource musicSource;
     private string targetName = "";
     private bool isShow = false;
     private bool isInfoShow = false;
@@ -74,8 +72,6 @@ public class UIEvent : MonoBehaviour
                 setResolution.value = j;
         }
         
-        musicSource = GetComponent<AudioSource>();
-
         for (int i = 0; i < panels.Length; i++)
         {
             CreatPanelTween(panels[i]);
@@ -128,37 +124,31 @@ public class UIEvent : MonoBehaviour
         }
 
         //设置背景音乐
-        if (BGM.value == 1)
-        {
-            siderBGM.gameObject.SetActive(true);          
-            //调节音量
-            musicSource.volume = siderBGM.value;
-        }
-        else
-        {
-            siderBGM.gameObject.SetActive(false);           
-        }
-        //设置音效
         if (music.value == 1)
-        {
+        {           
             sliderMusic.gameObject.SetActive(true);
+            musicSource.UnPause();
             //调节音量
-            soundSource.volume = sliderMusic.value;
+            musicSource.volume = sliderMusic.value;
         }
         else
         {
             sliderMusic.gameObject.SetActive(false);
+            musicSource.volume = 0;
+            musicSource.Pause();
         }
-
-        //设置草地密度
-        if (grass.value == 1)
+        //设置音效
+        if (sound.value == 1)
         {
-            sliderGrass.gameObject.SetActive(true);
-            //调节密度
+            sliderSound.gameObject.SetActive(true);
+            soundSource.Play();
+            //调节音量
+            soundSource.volume = sliderSound.value;
         }
         else
         {
-            sliderGrass.gameObject.SetActive(false);
+            sliderSound.gameObject.SetActive(false);
+            soundSource.Stop();
         }
 
         //是否渲染树木
@@ -203,7 +193,7 @@ public class UIEvent : MonoBehaviour
     /// <summary>
     /// 显示窗口
     /// </summary>
-    /// <param name="index">0：设置；1：地点；2：帮助；3：关于；4：退出</param>
+    /// <param name="index">0：设置；1：地点；2：帮助；3：关于；4：退出；5：机构设置</param>
     public void ShowPanel(int index)
     {
         if (!isShow)
@@ -246,31 +236,7 @@ public class UIEvent : MonoBehaviour
         yield return new WaitForSeconds(5f);
         ShowInfoPanel("");
     }
-
-    //音乐控制
-    public void Music()
-    {
-        if (BGM.value == 1)
-        {            
-            musicSource.Play();
-        }
-        else
-        {
-            musicSource.Stop();
-        }
-    }
-    public void Sound()
-    {
-        if (music.value == 1)
-        {
-            soundSource.volume = 1;
-        }
-        else
-        {
-            soundSource.volume = 0;
-        }
-    }
-
+   
     //设置分辨率
     public void SaveDisplayResolution()
     {

@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class MiniMapController : MonoBehaviour 
 {
+    [HideInInspector]
     public bool isMiniMapFullScreen;
+    [HideInInspector]
     public bool isEnterMiniMap;
+    [HideInInspector]
     public string clickIconToolTip;
+    [HideInInspector]
     public Vector3 clickPosition;
+    [HideInInspector]
     public bool canMove;
     private KGFMapSystem miniMap;
 
